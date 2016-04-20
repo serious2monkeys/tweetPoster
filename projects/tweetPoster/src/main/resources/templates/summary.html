@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/jquery.min.js}"></script>
+
+    </head>
+    <body>
+        <div class="container" align="center" style="width: 60%; margin-top: 1%">
+            <div class="jumbotron">
+                <form name="tweetForm" th:action="@{/summary}" th:object="${tweetForm}" method="post">
+                    <fieldset>
+                        <table align="center" style="align-content: center">
+                            <tr>
+                                <td>
+                                    <div th:if="${#fields.hasErrors('content')}" class="alert alert-error"
+                                         style="text-align: center; font-size: small" th:errors="*{content}">
+                                        Ошибка при указании пароля
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div align="center">
+                                        <textarea cols="50" th:field="*{content}" id="content" name="content"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-actions" align="center" style="margin-top: 10px;">
+                                        <button type="submit" class="btn">Опубликовать</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
+                <div class="panel-heading">
+                    <h2>Сообщения</h2>
+                </div>
+                <table class="table table-striped" border="0px">
+                    <tr th:each="tweet : ${tweets}" th:inline="text">
+                        <td>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    От [[${#temporals.format(tweet.dateCreated ,'dd-MMM-yyyy HH:mm')}]]
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Добавил: <a th:href="@{/show/} + ${tweet.user.userId}">[[${tweet.user.getLogin()}]]</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    [[${tweet.content}]]
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

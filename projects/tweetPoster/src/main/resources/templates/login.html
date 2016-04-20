@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/jquery.min.js}"></script>
+        <title tiles:fragment="title">Вход</title>
+    </head>
+    <body>
+        <div class="container" align="center" style="width: 60%; margin-top: 10%">
+            <div class="jumbotron">
+                <form name="loginForm" th:action="@{/login}" method="post" style="align-items: center">
+                    <fieldset>
+                        <legend>Введите логин и пароль</legend>
+                        <div th:if="${param.error}" class="alert alert-error">
+                            Указаны неверные данные для входа
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            Вы вышли из своей учётной записи
+                        </div>
+                        <div th:if="${param.registered}" class="alert alert-success">
+                            Вы успешно зарегистрированы и можете войти, используя свои реквизиты
+                        </div>
+                        <table width="45%">
+                            <tr>
+                                <td>
+                                    <label for="username">Логин</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="username" name="username"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="password">Пароль</label>
+                                </td>
+                                <td style="padding-top: 5px">
+                                    <input type="password" id="password" name="password"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-actions" align="center" style="margin-top: 10px;">
+                                        <button type="submit" style="width: 120px;" class="btn">Войти</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
+                <form name="signForm" th:action="@{/signup}" method="get">
+                    <div class="form-actions">
+                        У вас нет учётной записи?
+                        <button type="submit" class="btn">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
