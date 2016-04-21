@@ -43,7 +43,6 @@ public class UserController {
         ModelAndView model = new ModelAndView();
         User current = userService.findById(id);
         model.addObject("user", current);
-        // model.addObject("tweets", tweetRepository.findByUserByOrderByDateCreatedDesc(current));
         model.setViewName("show");
         return model;
     }
@@ -57,7 +56,6 @@ public class UserController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ModelAndView registerUser(@ModelAttribute("registerForm") @Valid User registerForm, BindingResult bindingResult) {
-        System.out.println("INFO: " + bindingResult.getAllErrors() + " " + registerForm.getLogin() + " " + registerForm.getEmail());
         ModelAndView modView;
         if (bindingResult.hasErrors()) {
             modView = new ModelAndView("signUpForm");
