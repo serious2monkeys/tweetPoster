@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tweets")
-public class Tweet implements Serializable{
+public class Tweet implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -22,11 +22,16 @@ public class Tweet implements Serializable{
     @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    @DateTimeFormat(pattern="dd-MMM-YYYY")
+    @DateTimeFormat(pattern = "dd-MMM-YYYY")
     @Column(name = "dateCreated", nullable = false)
     private LocalDateTime dateCreated;
 
     public Tweet() {
+        dateCreated = LocalDateTime.now();
+    }
+
+    public Tweet(String text) {
+        content = text;
         dateCreated = LocalDateTime.now();
     }
 
@@ -38,27 +43,18 @@ public class Tweet implements Serializable{
         dateCreated = time;
     }
 
-    public void setContent(String text) {
-        content = text;
-    }
-
     public String getContent() {
         return content;
     }
 
-    public Tweet(String text) {
+    public void setContent(String text) {
         content = text;
-        dateCreated = LocalDateTime.now();
     }
+
     public Long getTweetId() {
         return tweetId;
     }
 
-    /*
-    public void setTweetId(Long id) {
-        tweetId = id;
-    }
-*/
     public User getUser() {
         return user;
     }

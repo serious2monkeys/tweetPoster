@@ -22,13 +22,16 @@ public class User implements Serializable {
     @Column(name = "lastname", nullable = false)
     private String lastName;
 
-    @Column(name = "email",nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)
     private String password;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Tweet> tweets = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
 
     public User(User parent) {
         login = parent.login;
@@ -37,19 +40,17 @@ public class User implements Serializable {
         email = parent.lastName;
         password = SecurityConfiguration.encoder().encode(parent.password);
     }
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Tweet> tweets = new ArrayList<>();
 
     public Long getUserId() {
         return userId;
     }
 
-    public void setLogin (String userLogin) {
-        login = userLogin;
-    }
-
     public String getLogin() {
         return login;
+    }
+
+    public void setLogin(String userLogin) {
+        login = userLogin;
     }
 
     public String getFirstName() {

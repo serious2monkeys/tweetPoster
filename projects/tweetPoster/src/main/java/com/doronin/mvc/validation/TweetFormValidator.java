@@ -1,7 +1,6 @@
 package com.doronin.mvc.validation;
 
 import com.doronin.mvc.model.Tweet;
-import com.doronin.mvc.model.User;
 import com.doronin.mvc.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -17,14 +17,15 @@ public class UserAuthenticationProvider extends AbstractUserDetailsAuthenticatio
 
     @Autowired
     private PasswordEncoder encoder;
+
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         System.out.println("cred: " + authentication.getCredentials() + " pass: " + userDetails.getPassword());
-        if(authentication.getCredentials() == null || userDetails.getPassword() == null) {
+        if (authentication.getCredentials() == null || userDetails.getPassword() == null) {
             throw new BadCredentialsException("Аутентификация невозможна");
         }
 
-        if(!encoder.matches((String) authentication.getCredentials(), userDetails.getPassword())) {
+        if (!encoder.matches((String) authentication.getCredentials(), userDetails.getPassword())) {
             throw new BadCredentialsException("Переданы неверные данные");
         }
     }

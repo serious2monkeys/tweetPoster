@@ -15,11 +15,11 @@ public class DbInitializer {
         admin.setLastName("Smith");
         admin.setPassword(SecurityConfiguration.encoder().encode("admin"));
         admin.setEmail("admin@mymail.com");
-        Tweet sampleTweet = new Tweet("Sample Tweet! Youpiiieee!");
+        Tweet sampleTweet = new Tweet("Сначала было слово");
         sampleTweet.setUser(admin);
         ur.save(admin);
         tr.save(sampleTweet);
-        Tweet second = new Tweet("Just for test");
+        Tweet second = new Tweet("А за ним ещё одно");
         second.setUser(admin);
         tr.save(second);
 
@@ -29,7 +29,7 @@ public class DbInitializer {
         sammy.setLastName("Withweakie");
         sammy.setEmail("sammy@mymail.com");
         sammy.setPassword(SecurityConfiguration.encoder().encode("MyPass"));
-        Tweet girlTweet = new Tweet("I'm just a girl");
+        Tweet girlTweet = new Tweet("Я тоже могу тут писать");
         girlTweet.setUser(sammy);
         ur.save(sammy);
         tr.save(girlTweet);

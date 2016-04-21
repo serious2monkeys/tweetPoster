@@ -1,6 +1,5 @@
 package com.doronin.mvc.service;
 
-import com.doronin.mvc.config.SecurityConfiguration;
 import com.doronin.mvc.model.Tweet;
 import com.doronin.mvc.repository.TweetRepository;
 import org.springframework.beans.factory.annotation.Autowired;

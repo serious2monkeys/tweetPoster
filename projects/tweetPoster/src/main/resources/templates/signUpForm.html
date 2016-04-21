@@ -1,93 +1,105 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
-        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <script th:src="@{/js/bootstrap.min.js}"></script>
-        <script th:src="@{/js/jquery.min.js}"></script>
-        <title tiles:fragment="title">Регистрация нового пользователя</title>
-    </head>
-    <body>
-        <div class="container"  align="center" style="width: 60%; margin-top: 10%">
-            <div class="jumbotron">
-                <form name="registerForm" th:action="@{/signup}" th:object="${registerForm}" method="post">
-                    <fieldset>
-                        <table align="center" style="align-content: center">
-                            <tr style="text-align: center">
-                                <td colspan="2"><legend>Введите необходимые данные</legend></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center">
-                                    <div th:if="${param.error}" class="alert alert-error">
-                                        Данные указаны неверно.
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr style="text-align: center">
-                                <td colspan="2" style="font-size: small" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Ошибка при указании логина</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="login">Логин</label>
-                                </td>
-                                <td>
-                                    <input type="text" th:field="*{login}" id="login" name="login" />
-                                </td>
-                            </tr>
-                            <tr style="text-align: center">
-                                <td colspan="2" style="font-size: small" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Ошибка при указании имени</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="firstName">Имя</label>
-                                </td>
-                                <td>
-                                    <input type="text" th:field="*{firstName}" id="firstName" name="firstName"/>
-                                </td>
-                            </tr>
-                            <tr style="text-align: center">
-                                <td colspan="2" style="font-size: small" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Ошибка при указании фамилии</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="lastName">Фамилия</label>
-                                </td>
-                                <td>
-                                    <input type="text" th:field="*{lastName}" id="lastName" name="lastName"/>
-                                </td>
-                            </tr>
-                            <tr style="text-align: center">
-                                <td colspan="2" width="100%" style="font-size: small" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Ошибка при указании email</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="email">Email</label>
-                                </td>
-                                <td>
-                                    <input type="text" th:field="*{email}" id="email" name="email"/>
-                                </td>
-                            </tr>
-                            <tr style="text-align: center">
-                                <td colspan="2" style="font-size: small" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Ошибка при указании пароля</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label for="password">Пароль</label>
-                                </td>
-                                <td>
-                                    <input type="text" th:field="*{password}" id="password" name="password"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="form-actions" align="center" style="margin-top: 10px;">
-                                        <button type="submit" class="btn">Зарегистрироваться</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <title tiles:fragment="title">Регистрация нового пользователя</title>
+</head>
+<body>
+<div class="container" align="center" style="width: 60%; margin-top: 10%">
+    <div class="jumbotron">
+        <form name="registerForm" th:action="@{/signup}" th:object="${registerForm}" method="post">
+            <fieldset>
+                <table align="center" style="align-content: center">
+                    <tr style="text-align: center">
+                        <td colspan="2">
+                            <legend>Введите необходимые данные</legend>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center">
+                            <div th:if="${param.error}" class="error">
+                                Данные указаны неверно.
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2" style="font-size: small; color: red; margin-bottom: 5px;" th:if="${#fields.hasErrors('login')}"
+                            th:errors="*{login}">Ошибка при указании логина
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="login">Логин</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{login}" id="login" name="login"/>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2" style="font-size: small; color: red; margin-bottom: 5px;" th:if="${#fields.hasErrors('firstName')}"
+                            th:errors="*{firstName}">Ошибка при указании имени
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="firstName">Имя</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{firstName}" id="firstName" name="firstName"/>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2" style="font-size: small; color: red; margin-bottom: 5px;" th:if="${#fields.hasErrors('lastName')}"
+                            th:errors="*{lastName}">Ошибка при указании фамилии
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="lastName">Фамилия</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{lastName}" id="lastName" name="lastName"/>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2" width="100%" style="font-size: small; color: red; margin-bottom: 5px;" th:if="${#fields.hasErrors('email')}"
+                            th:errors="*{email}">Ошибка при указании email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">Email</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{email}" id="email" name="email"/>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2" style="font-size: small; color: red; margin-bottom: 5px;" th:if="${#fields.hasErrors('password')}"
+                            th:errors="*{password}">Ошибка при указании пароля
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">Пароль</label>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{password}" id="password" name="password"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="form-actions" align="center" style="margin-top: 10px;">
+                                <button type="submit" class="btn">Зарегистрироваться</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</body>
 </html>

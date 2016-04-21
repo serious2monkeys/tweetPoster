@@ -1,11 +1,10 @@
 package com.doronin.mvc.repository;
 
 
-import com.doronin.mvc.model.User;;
+import com.doronin.mvc.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @Repository

@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
-        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-        <script th:src="@{/js/bootstrap.min.js}"></script>
-        <script th:src="@{/js/jquery.min.js}"></script>
-    </head>
-    <body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"></meta>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+</div>
+    <div class="container" align="center" style="width: 60%; margin-top: 5%" th:inline="text">
         <div class="jumbotron">
-            <div class="container" style="align-content: center" th:inline="text">
-                <h1 align="center">Данные о пользователе</h1>
-                <table class="table table-striped" border="0px" style="align-content: center">
-                    <tr>
-                        <td>
-                            Логин:
-                        </td>
-                        <td><a th:href="@{/show/} + ${user.userId}">[[${user.login}]]</a></td>
-                    </tr>
-                    <tr>
-                        <td>Имя: </td>
-                        <td>[[${user.firstName}]]</td>
-                    </tr>
-                    <tr>
-                        <td>Фамилия: </td>
-                        <td>[[${user.lastName}]]</td>
-                    </tr>
-                    <tr>
-                        <td>Почта: </td>
-                        <td>[[${user.email}]]</td>
-                    </tr>
-                </table>
-            </div>
+            <h2 align="center">Данные о пользователе</h2>
+            <table class="table table-striped" border="0px" style="align-content: center">
+                <tr>
+                    <td>
+                        Логин:
+                    </td>
+                    <td><a th:href="@{/show/} + ${user.userId}">[[${user.login}]]</a></td>
+                </tr>
+                <tr>
+                    <td>Имя:</td>
+                    <td>[[${user.firstName}]]</td>
+                </tr>
+                <tr>
+                    <td>Фамилия:</td>
+                    <td>[[${user.lastName}]]</td>
+                </tr>
+                <tr>
+                    <td>Почта:</td>
+                    <td>[[${user.email}]]</td>
+                </tr>
+            </table>
         </div>
-    </body>
+    </div>
+</body>
 </html>

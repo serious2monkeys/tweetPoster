@@ -40,8 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //http.authorizeRequests().antMatchers("/**").permitAll();
-        http.authorizeRequests().antMatchers("/signup", "/register").permitAll();
+        http.authorizeRequests().antMatchers("/signup","/login", "/register", "/logout").permitAll();
         http.authorizeRequests().anyRequest().fullyAuthenticated();
         http.formLogin()
                 .loginPage("/login")
@@ -49,35 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()
-                .logout().
-                logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
-
-                http.sessionManagement()
-                        .sessionFixation()
-                        .newSession();
-                /*
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .clearAuthentication(true)
-                .deleteCookies("spring.thymeleaf.cache")
-                .permitAll();
-
-            */
-
-        /*
-        http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/summary")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
-                */
+                .logout().permitAll()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout");
     }
 }

@@ -1,0 +1,12 @@
+body {
+    background-color: aliceblue;
+}
+
+.error {
+    color: red;
+    margin-bottom: 5px;
+}
+.alert-error{
+    color:inherit;
+    background-color:#d9534f;
+    border-color:#d6e9c6}

@@ -8,12 +8,7 @@ import java.util.List;
 
 public interface TweetRepository extends CrudRepository<Tweet, Long> {
     public List<Tweet> findByUser(User user);
-
-    //public List<Tweet> findByUserByOrderByDateCreatedDesc(User user);
-
     public List<Tweet> findAll();
-
-    //public List<Tweet> findAllByOrderByDateCreatedDesc();
 
 
 }

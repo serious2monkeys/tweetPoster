@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 @Service
 public class LoginDetailsService implements UserDetailsService {
 
@@ -21,7 +22,7 @@ public class LoginDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User someUser = userService.findByLogin(username);
-        if(someUser == null) {
+        if (someUser == null) {
             throw new UsernameNotFoundException("Такого пользователя нет");
         }
         Collection<GrantedAuthority> authorities = new ArrayList<>();
